@@ -1,6 +1,8 @@
 import random
 
 def selection_sort(t):
+    t = list(t)
+
     i = 0
     for i in range(len(t) - 1):
         min_index = i
@@ -16,6 +18,8 @@ def selection_sort(t):
     return t
 
 def bubble_sort(t):
+    t = list(t)
+
     i = 0
     for i in range(len(t) - 1):
         j = 0
@@ -29,6 +33,7 @@ def bubble_sort(t):
     return t
 
 def merge_sort(t):
+    t = list(t)
 
 
     return t
