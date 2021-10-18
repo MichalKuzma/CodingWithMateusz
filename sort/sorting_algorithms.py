@@ -3,16 +3,12 @@ import random
 def selection_sort(t):
     t = list(t)
 
-    i = 0
-    for i in range(len(t) - 1):
+    for i in range(len(t)):
         min_index = i
-        j = i + 1
-        for j in range(len(t)):
+        for j in range(i , len(t)):
             if t[min_index] > t[j]:
                 min_index = j
-                j += 1
         t[i] , t[min_index] = t[min_index] , t[i]
-        i += 1
 
     
     return t
