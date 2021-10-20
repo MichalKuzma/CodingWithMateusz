@@ -8,7 +8,9 @@ def selection_sort(t):
         for j in range(i , len(t)):
             if t[min_index] > t[j]:
                 min_index = j
-        t[i] , t[min_index] = t[min_index] , t[i]
+        tmp = t[i]
+        t[i] = t[min_index]
+        t[min_index] = tmp
 
     
     return t
@@ -16,20 +18,47 @@ def selection_sort(t):
 def bubble_sort(t):
     t = list(t)
 
-    i = 0
     for i in range(len(t) - 1):
-        j = 0
         for j in range(len(t) - 1):
             if t[j] > t[j + 1]:
-                t[j] , t[j + 1] = t[j +1] , t[j]
-            j += 1
-        i += 1
-    
-    
+                tmp = t[j]
+                t[j] = t[j + 1]
+                t[j + 1] = tmp
+        
+       
     return t
 
-def merge_sort(t):
+def merge_sort(t): #nie intuicyjne, dziwne, bąbelkownanie lepszze nie działa, nawet internet nie pomaga, i need help!!!!!!!!!!!!!! 
     t = list(t)
+    if len(t) > 1:
+        mid = len(t) // 2
+        L = t[:mid]
+        R = t[mid:]
+
+        merge_sort(L) # nie miałem pojęcia o istnieniu tego zwrotu 
+        merge_sort(R)
+
+        i = 0 # left 
+        j = 0 # right 
+        k = 0 # merged 
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                t[k] = L[i]
+                i += 1
+                k += 1
+            else:
+                t[k] = R[j]
+                j += 1
+                k += 1
+        while i < len(L):
+            t[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            t[k] = R[j]
+            j += 1
+            k += 1
+        
 
 
     return t
