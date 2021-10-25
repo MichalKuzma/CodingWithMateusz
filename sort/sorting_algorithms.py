@@ -30,38 +30,40 @@ def bubble_sort(t):
 
 def merge_sort(t): #nie intuicyjne, dziwne, bąbelkownanie lepszze nie działa, nawet internet nie pomaga, i need help!!!!!!!!!!!!!! 
     t = list(t)
+
     if len(t) > 1:
         mid = len(t) // 2
         L = t[:mid]
         R = t[mid:]
 
-        merge_sort(L) # nie miałem pojęcia o istnieniu tego zwrotu 
-        merge_sort(R)
+        sorted_L = merge_sort(L) # nie miałem pojęcia o istnieniu tego zwrotu 
+        sorted_R = merge_sort(R)
 
-        i = 0 # left 
-        j = 0 # right 
-        k = 0 # merged 
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                t[k] = L[i]
-                i += 1
-                k += 1
-            else:
-                t[k] = R[j]
-                j += 1
-                k += 1
-        while i < len(L):
+        merge(t, sorted_L, sorted_R)
+        
+    return t
+
+def merge(t, L, R):
+    i = 0 # left 
+    j = 0 # right 
+    k = 0 # merged 
+    while i < len(L) and j < len(R):
+        if L[i] < R[j]:
             t[k] = L[i]
             i += 1
-            k += 1
-        while j < len(R):
+        else:
             t[k] = R[j]
             j += 1
-            k += 1
-        
+        k += 1
 
-
-    return t
+    while i < len(L):
+        t[k] = L[i]
+        i += 1
+        k += 1
+    while j < len(R):
+        t[k] = R[j]
+        j += 1
+        k += 1
 
 x = random.sample(range(0, 100), 10)
 print('Input List:\t', x)
